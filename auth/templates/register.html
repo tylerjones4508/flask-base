@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+{% block head_content %}
+<link rel="stylesheet" href="{{ url_for('auth.static', filename='auth.css') }}">
+{% endblock %}
+
+
+{% block login_content %}
+
+<section class="login">
+    <form action="" method="post">
+        <div class="boxes">
+            <h1>Register</h1>
+            <div class="box_content">
+                <div class="flex-form">
+                    <label for="username">Username</label>
+                    <input class="username" type="text" id="username" name="username">
+                </div>
+                <div class="flex-form">
+                    <label for="fname">First Name</label>
+                    <input class="fname" type="text" id="fname" name="fname">
+                </div>
+                <div class="flex-form">
+                    <label for="lname">Last Name</label>
+                    <input class="lname" type="text" id="lname" name="lname">
+                </div>
+                <div class="flex-form">
+                    <label for="email">Email</label>
+                    <input class="email" type="text" id="email" name="email">
+                </div>
+                <div class="flex-form">
+                    <label for="password">Password</label>
+                    <input class="password" type="password" id="password" name="password">
+                </div>
+
+                <button type="submit">Register</button>
+                <p>Click <a href="{{ url_for('auth.login') }}">Login</a> if you have a account</p>
+            </div>
+        </div>
+    </form>
+</section>
+
+{%endblock%}

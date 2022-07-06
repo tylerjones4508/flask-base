@@ -1,0 +1,35 @@
+{% extends "index.html" %}
+
+{% block main_content %}
+
+<section class="page__content">
+    <form action="" method="post">
+    <div class="content">
+            <textarea class='textarea' placeholder="TEST" cols="30" rows="5"></textarea>
+            <select class="dropdown" name="users" id="users">
+                {% for user in all_users%}
+                <option value="{{ user.username }}">{{ user.first_name }} {{user.last_name }} "{{ user.username}}"</option>
+                {% endfor %}
+            </select>
+    </div>
+    <div class="button__selection">
+        <button class="button_real" type="submit">Create Task</button>
+        <!-- <button class="button_real" type="submit">HOLDER</button> -->
+    </div>
+    </form>
+    {% for x in task  %}
+    <div class="post">
+        <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+        <p>{{ x.content }}</p>
+        <button>test</button>
+    </div>
+    {% endfor %}
+    <!-- <p>clean your room<i class="fa-solid fa-trash-can"></i>
+    
+    <button>test</button>
+    </p> -->
+
+</section>
+
+
+{% endblock %}

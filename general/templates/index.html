@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('home.static', filename='general.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/569235064b.js" crossorigin="anonymous"></script>
+    {% block head_content %} {% endblock %}
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__logo"><a href="">Task Tracker</a></h1>
+         <ul class="header__link">
+            {% if current_user.is_authenticated %}
+            <li class="header_a"><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+            {% else %}
+            <li class="header_a"><a href="{{ url_for('auth.login') }}">Login</a></li>
+            <li class="header_a"><a href="{{ url_for('auth.resgister') }}">Register</a></li>
+            {% endif %}
+         </ul>
+    </header>
+    {% if current_user.is_authenticated %}
+    <main class="main_layout">
+        <section class="side__pannel">
+            <ul class="side_items">
+                <li><img src="{{ url_for('home.static', filename='profile.jpeg') }}" alt=""></li>
+                <li><a href="">Home</a></li>
+                <li><a href="">Settting</a></li>
+                <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+            </ul>
+        </section>
+        {% block main_content %}
+        {% endblock %}
+    </main>
+    {% else %}
+        {% block login_content %}
+        {% endblock %}
+    {% endif %}
+    
+</body>
+</html>
